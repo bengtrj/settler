@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".create.NewPropertyActivity"
+    tools:showIn="@layout/activity_new_property">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/propertyNumberDecorator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/propertyNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/property_number_hint"
+            android:inputType="numberDecimal" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/propertyAddressDecorator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintStart_toStartOf="@+id/propertyNumberDecorator"
+        app:layout_constraintTop_toBottomOf="@+id/propertyNumberDecorator">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/propertyAddressInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/property_address"
+            android:inputType="textPostalAddress"
+            app:layout_constraintStart_toStartOf="@+id/label_property_number"
+            app:layout_constraintTop_toBottomOf="@+id/label_property_number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:enabled="false" />
+
+</android.support.constraint.ConstraintLayout>

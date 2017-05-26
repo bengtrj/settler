@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Settler</string>
+    <string name="action_settings">Settings</string>
+    <string name="property_number_hint">Property number</string>
+    <string name="validation_property_number">Invalid property number</string>
+    <string name="validation_property_address">Invalid address</string>
+    <string name="property_address">Property Address</string>
+    <string name="save">Save</string>
+    <string name="new_property_title">New property</string>
+    <string name="property_list_title">Your properties</string>
+</resources>
