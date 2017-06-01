@@ -1,4 +1,4 @@
-package settler.com.settler
+package com.settler
 
 import android.support.annotation.StringRes
 

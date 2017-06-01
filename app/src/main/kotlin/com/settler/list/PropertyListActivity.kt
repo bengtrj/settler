@@ -1,12 +1,12 @@
-package settler.com.settler.list
+package com.settler.list
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
-import settler.com.settler.R
-import settler.com.settler.create.NewPropertyActivity
+import com.settler.R
+import com.settler.create.NewPropertyActivity
 
 class PropertyListActivity : AppCompatActivity() {
 

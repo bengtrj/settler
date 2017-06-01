@@ -1,18 +1,18 @@
-package settler.com.settler.create
+package com.settler.create
 
 import android.content.res.Resources
-import settler.com.settler.R
-import settler.com.settler.SettlerApplication
-import settler.com.settler.ValidationResult
+import com.settler.R
+import com.settler.SettlerApplication.Companion.injector
+import com.settler.ValidationResult
 import javax.inject.Inject
 
-class NewPropertyValidator {
+open class NewPropertyValidator {
 
     @Inject
     lateinit var resources: Resources
 
     init {
-        SettlerApplication.injector.inject(this)
+        injector.inject(this)
     }
 
     val validatePropertyNumber: (CharSequence) -> ValidationResult = {

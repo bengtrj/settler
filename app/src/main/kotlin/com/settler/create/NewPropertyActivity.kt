@@ -1,4 +1,4 @@
-package settler.com.settler.create
+package com.settler.create
 
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
@@ -6,25 +6,24 @@ import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.settler.R
+import com.settler.SettlerApplication
+import com.settler.ValidationResult
 import io.reactivex.Observable
 import io.reactivex.Observable.combineLatest
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.content_new_property.*
-import settler.com.settler.R
-import settler.com.settler.SettlerApplication
-import settler.com.settler.ValidationResult
 import javax.inject.Inject
 
 class NewPropertyActivity : AppCompatActivity() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    @Inject
-    lateinit var validator: NewPropertyValidator
+    @Inject lateinit var validator: NewPropertyValidator
 
     init {
-        SettlerApplication.injector.inject(this)
+        SettlerApplication.Companion.injector.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +32,7 @@ class NewPropertyActivity : AppCompatActivity() {
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        setupPropertyNumberValidation()
+        setupValidation()
     }
 
     override fun onDestroy() {
@@ -41,7 +40,7 @@ class NewPropertyActivity : AppCompatActivity() {
         compositeDisposable.clear()
     }
 
-    private fun setupPropertyNumberValidation() {
+    private fun setupValidation() {
         propertyAddressDecorator.isErrorEnabled = true
 
         val propertyNumberObservable =

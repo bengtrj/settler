@@ -1,11 +1,11 @@
-package settler.com.settler.config
+package com.settler.config
 
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
+import com.settler.create.NewPropertyValidator
 import dagger.Module
 import dagger.Provides
-import settler.com.settler.create.NewPropertyValidator
 import javax.inject.Singleton
 
 @Module
@@ -13,13 +13,13 @@ open class ContextModule(val app : Application) {
 
     @Provides
     @Singleton
-    fun provideContext() : Context = app
+    open fun provideContext() : Context = app
 
     @Provides
     @Singleton
-    fun provideResources() : Resources = app.resources
+    open fun provideResources() : Resources = app.resources
 
     @Provides
-    fun provideNewPropertyValidator() = NewPropertyValidator()
+    open fun provideNewPropertyValidator() = NewPropertyValidator()
 
 }

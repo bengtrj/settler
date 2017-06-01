@@ -1,8 +1,8 @@
-package settler.com.settler.config
+package com.settler.config
 
+import com.settler.create.NewPropertyActivity
+import com.settler.create.NewPropertyValidator
 import dagger.Component
-import settler.com.settler.create.NewPropertyActivity
-import settler.com.settler.create.NewPropertyValidator
 import javax.inject.Singleton
 
 @Singleton
