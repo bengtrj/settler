@@ -3,6 +3,8 @@ package com.settler.create
 import android.annotation.SuppressLint
 import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.whenever
 import com.settler.BuildConfig
 import com.settler.R
@@ -13,6 +15,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito.`when`
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.android.controller.ActivityController
@@ -33,26 +36,44 @@ class NewPropertyActivityTest {
 
     @Before
     fun setup() {
+
         activityController = Robolectric.buildActivity(NewPropertyActivity::class.java)
-        activity = activityController.create().get()
+        activity = activityController.get()
+
+        whenever(activity.validator.validatePropertyNumber(any())).thenReturn(
+                ValidationResult(true, null)
+        )
+
+        whenever(activity.validator.validatePropertyAddress(any())).thenReturn(
+                ValidationResult(true, null)
+        )
+
+        activityController.create()
 
         propertyNumberInput = activity.propertyNumberInput
         propertyNumberDecorator = activity.propertyNumberDecorator
         propertyAddressInput = activity.propertyAddressInput
         propertyAddressDecorator = activity.propertyAddressDecorator
+
     }
 
     @Test
     fun shouldValidateAddressNumber() {
+        whenever(activity.validator.validatePropertyNumber(any())).thenReturn(
+            ValidationResult(false, R.string.validation_property_number)
+        )
+
         activityController.start()
 
-        whenever(activity.validator.validatePropertyNumber).thenReturn { ValidationResult(true, null) }
         assertEquals(null, propertyNumberDecorator.error)
 
         propertyNumberInput.setText("12345")
         assertEquals(null, propertyNumberDecorator.error)
 
-        whenever(activity.validator.validatePropertyNumber).thenReturn { ValidationResult(false, R.string.validation_property_number) }
+        whenever(activity.validator.validatePropertyAddress(any())).thenReturn(
+                ValidationResult(false, R.string.validation_property_number)
+        )
+
         propertyNumberInput.setText("123456")
         assertEquals("Invalid property number", propertyNumberDecorator.error)
     }

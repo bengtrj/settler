@@ -3,11 +3,11 @@
 buildscript {
 
     ext {
-        kotlin_version = '1.1.2-4'
+        kotlin_version = '1.1.2-5'
         target_sdk = 25
         min_sdk = 16
         build_tools_version = "25.0.3"
-        android_compat_version = "25.3.1"
+        android_compat_version = "25.4.0"
     }
 
     repositories {
@@ -16,7 +16,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-alpha2'
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 

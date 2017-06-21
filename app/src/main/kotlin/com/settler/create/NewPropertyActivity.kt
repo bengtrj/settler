@@ -44,10 +44,10 @@ class NewPropertyActivity : AppCompatActivity() {
         propertyAddressDecorator.isErrorEnabled = true
 
         val propertyNumberObservable =
-                setupFieldValidationObservable(propertyNumberInput, propertyNumberDecorator, validator.validatePropertyNumber)
+                setupFieldValidationObservable(propertyNumberInput, propertyNumberDecorator, validator::validatePropertyNumber)
 
         val propertyAddressObservable =
-                setupFieldValidationObservable(propertyAddressInput, propertyAddressDecorator, validator.validatePropertyAddress)
+                setupFieldValidationObservable(propertyAddressInput, propertyAddressDecorator, validator::validatePropertyAddress)
 
         compositeDisposable.add(propertyNumberObservable.subscribe(handleValidation))
         compositeDisposable.add(propertyAddressObservable.subscribe(handleValidation))
@@ -80,6 +80,8 @@ class NewPropertyActivity : AppCompatActivity() {
                     Pair(inputDecorator, result)
                 }
     }
+
+    fun validate(string: CharSequence) : ValidationResult = ValidationResult(true, null)
 
     private val handleValidation: (Pair<TextInputLayout, ValidationResult>) -> Unit = {
         (layout, result) ->
