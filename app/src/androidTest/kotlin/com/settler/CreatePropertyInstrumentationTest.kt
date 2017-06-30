@@ -8,7 +8,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.filters.SmallTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import com.settler.create.NewPropertyActivity
+import com.settler.create.CreatePropertyActivity
 import com.settler.matchers.TextInputLayoutMatcher.inputLayoutWithError
 import org.junit.Rule
 import org.junit.Test
@@ -19,7 +19,7 @@ import org.junit.runner.RunWith
 class CreatePropertyInstrumentationTest {
 
     @Rule
-    val rule = ActivityTestRule<NewPropertyActivity>(NewPropertyActivity::class.java)
+    val rule = ActivityTestRule<CreatePropertyActivity>(CreatePropertyActivity::class.java)
 
     @Test
     @Throws(Exception::class)
