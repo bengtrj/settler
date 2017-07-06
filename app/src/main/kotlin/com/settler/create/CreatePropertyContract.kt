@@ -13,15 +13,15 @@ interface CreatePropertyContract {
 
         fun updateSaveButtonStatus(enabled: Boolean)
 
+        fun getPropertyNumberChangesFlux(): Flux<CharSequence>
+
+        fun getPropertyAddressChangesFlux(): Flux<CharSequence>
+
     }
 
     interface Presenter {
 
         fun attach(uiController: UiController)
-
-        fun setupPropertyNumberTextChangesFlux(flux: Flux<CharSequence>)
-
-        fun setupPropertyAddressTextChangesFlux(flux: Flux<CharSequence>)
 
         fun cleanup()
 

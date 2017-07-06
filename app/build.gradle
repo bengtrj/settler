@@ -27,6 +27,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -42,11 +46,14 @@ android {
     productFlavors {
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
 }
 
 ext {
     dagger_version = "2.10"
-//    rxbinding_version = "2.0.0"
 }
 
 kapt {
@@ -86,7 +93,7 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
     testCompile 'junit:junit:4.12'
-    testCompile 'org.robolectric:robolectric:3.4-SNAPSHOT'
+    testCompile 'org.robolectric:robolectric:3.3.2'
     testCompile 'com.nhaarman:mockito-kotlin:1.5.0'
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"

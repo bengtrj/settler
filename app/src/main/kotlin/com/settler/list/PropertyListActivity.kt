@@ -24,7 +24,7 @@ class PropertyListActivity : AppCompatActivity() {
     }
 
     private fun setupFab() {
-        val fab = findViewById(R.id.action_add) as FloatingActionButton
+        val fab = findViewById<FloatingActionButton>(R.id.action_add) as FloatingActionButton
 
         fab.setOnClickListener { _ ->
             val intent = Intent(this, CreatePropertyActivity::class.java)

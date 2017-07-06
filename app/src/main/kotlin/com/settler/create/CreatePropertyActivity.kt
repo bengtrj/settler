@@ -10,6 +10,7 @@ import com.settler.SettlerApplication
 import com.settler.create.CreatePropertyContract.Presenter
 import kotlinx.android.synthetic.main.activity_new_property.*
 import kotlinx.android.synthetic.main.content_new_property.*
+import reactor.core.publisher.Flux
 import settler.com.reactor.EditTextFlux
 import javax.inject.Inject
 
@@ -24,14 +25,14 @@ class CreatePropertyActivity : CreatePropertyContract.UiController, AppCompatAct
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_property)
-
         setSupportActionBar(toolbar)
+
+        propertyAddressDecorator.isErrorEnabled = true
         presenter.attach(this)
     }
 
     override fun onStart() {
         super.onStart()
-        setupFormFields()
     }
 
     override fun onDestroy() {
@@ -51,15 +52,10 @@ class CreatePropertyActivity : CreatePropertyContract.UiController, AppCompatAct
         saveButton.isEnabled = enabled
     }
 
-    private fun setupFormFields() {
-        propertyAddressDecorator.isErrorEnabled = true
+    override fun getPropertyNumberChangesFlux() = EditTextFlux.textChanges(propertyNumberInput)
 
-        presenter.setupPropertyNumberTextChangesFlux(EditTextFlux.textChanges(propertyNumberInput))
-        presenter.setupPropertyAddressTextChangesFlux(EditTextFlux.textChanges(propertyAddressInput))
+    override fun getPropertyAddressChangesFlux() = EditTextFlux.textChanges(propertyAddressInput)
 
-    }
-
-    //TODO see if instead of null, an empty resource String would be better
     private fun handleValidationMessage(@NonNull layout: TextInputLayout, @StringRes messageResourceId: Int) {
         layout.error = if (messageResourceId == R.string.empty) null else getString(messageResourceId)
     }

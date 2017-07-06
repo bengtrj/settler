@@ -24,9 +24,11 @@ class CreatePropertyPresenter : CreatePropertyContract.Presenter {
 
     override fun attach(uiController: UiController) {
         this.uiController = uiController
+        setupPropertyNumberTextChangesFlux(uiController.getPropertyNumberChangesFlux())
+        setupPropertyAddressTextChangesFlux(uiController.getPropertyAddressChangesFlux())
     }
 
-    override fun setupPropertyNumberTextChangesFlux(flux: Flux<CharSequence>) {
+    private fun setupPropertyNumberTextChangesFlux(flux: Flux<CharSequence>) {
 
         compositeDisposable.add(
                 flux
@@ -41,7 +43,7 @@ class CreatePropertyPresenter : CreatePropertyContract.Presenter {
 
     }
 
-    override fun setupPropertyAddressTextChangesFlux(flux: Flux<CharSequence>) {
+    private fun setupPropertyAddressTextChangesFlux(flux: Flux<CharSequence>) {
 
         compositeDisposable.add(
                 flux
